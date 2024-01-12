@@ -1,9 +1,9 @@
 name: Integration based on gbprod/yanky.nvim
 on:
     push:
-        branches: [master]
+        branches: [add-CI]
     pull_request:
-        branches: [master]
+        branches: [add-CI]
     schedule:
         - cron: '0 7 * * 1'
      # Allows you to run this workflow manually from the Actions tab

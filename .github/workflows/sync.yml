@@ -1,0 +1,27 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # every 30 minutes
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: tgymnich/fork-sync@v1.8
+        with:
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          owner: nvim-lua # owner of the upstream
+          head: master # upstream branch name
+          base: master # branch name in fork
+          merge_method: merge
+
+    steps:
+      - uses: tgymnich/fork-sync@v1.8
+        with:
+          head: master # from branch name
+          base: add-CI # into branch
+          merge_method: rebase
